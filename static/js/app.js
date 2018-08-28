@@ -4,6 +4,17 @@ var tbody = d3.select("tbody");
 // Console.log the UFO dataset from data.js
 console.log(data);
 
+data.forEach(function(UFO){
+    console.log(UFO);
+    var row = tbody.append("tr");
+    Object.entries(UFO).forEach(function([key,value]){
+        console.log(key, value);
+        var cell = tbody.append("td");
+        cell.text(value);
+    });
+});
+
+
 
 // Getting a reference to the button on the page with the id property
 var button = d3.select("#filter-btn");
@@ -15,7 +26,6 @@ button.on("click", function() {
     var inputField = d3.select("#datetime"); 
     var inputValue = inputField.property("value");
     console.log(inputValue);
-    //console.log(data);
 
     var filteredData = data.filter(data => data.datetime === inputValue);
     console.log(filteredData);
@@ -33,4 +43,3 @@ button.on("click", function() {
         });
     });
 });
-  
